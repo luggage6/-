@@ -1,0 +1,52 @@
+文件=内容＋属性
+为什么用文件，文件可以让数据持久化保存
+磁盘上的文件是文件
+分为数据文件和程序文件
+文件操作
+
+Fopen
+FILE *fopen（char const filename，char const mode）
+例：FILE *fp=fopen（"text.log","w"）[打开text.log，打开方式是写入]
+这个必须在vs的当前目录下才可以使用（你vs建立 .c 文件的目录下）
+也可以自己加路径
+FILE *fp=fopen（"C:\\Temp\\TxGameDownload\\text.log","w"）
+这个返回值为指向文件名的地址
+
+关闭时为
+ int fclose（FLIE）
+例：fclose（fp）
+；
+输出
+fputs（i，stdout）；
+就是在显示器上输出
+
+fputs（i，fp）；
+在文件里面写入
+数据文件分两类，一个是文本类文件，一个是二进制文件
+fscanf（fp，想要写入的内容就“%d”，a）；
+这个也是一个输入的函数，可以进行向文件里面输入的一个函数
+
+文件的随机读写
+ fseek
+ int fseek（FILE *fp，long int offset，int origin[ 参考基础]）；
+这个是根据文件的偏移量和文件的地址地址，来进行文件的更改
+ ftell 
+ int ftell（FILE *fp）；
+用法int set=ftell（fp）；
+作用就是输出里面文字的偏移量
+ rewind
+ rewind（FILE *fp）
+把读写的位置还原到最初
+
+数据文件被分为两个种类，文本文件和二进制文件
+
+文件结束的判定
+ feof（FILE*fp）；
+文本文件判断结尾的时候得一直读取，然后等出错了之后才可以用feof
+返回值为EOF是“错误”的一种
+
+c程序有缓冲机制
+有无缓冲（）
+行缓冲（向显示器写入）
+全缓冲（向普通文件写入）
+存在的价值是为了提高程序本身的效率
