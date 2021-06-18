@@ -1,0 +1,22 @@
+//求一个二叉树是不是平衡二叉树
+//求高度
+int maxDepth(struct TreeNode* root){
+    if(root==NULL)
+        return 0;
+        int leftdepth=maxDepth(root->left);
+        int rightdepth=maxDepth(root->right);
+
+     return leftdepth > rightdepth ? leftdepth+1 : rightdepth+1;
+}
+
+bool isBalanced(struct TreeNode* root){
+    if(root==NULL)
+    {
+        return true;
+    }
+    int rightheight=maxDepth(root->right);
+    int leftheight=maxDepth(root->left);
+    if(leftheight-rightheight>1||rightheight-leftheight>1)
+    return false;
+    return isBalanced(root->left)&&isBalanced(root->right);;
+}
